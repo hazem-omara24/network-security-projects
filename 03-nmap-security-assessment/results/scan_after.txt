@@ -1,0 +1,9 @@
+Nmap scan report for 192.168.138.1
+Host is up (0.00050s latency).
+Not shown: 999 filtered tcp ports (no-response)
+PORT     STATE SERVICE VERSION
+5357/tcp open  http    Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+MAC Address: 00:50:56:C0:00:08 (VMware)
+Device type: general purpose
+Running (JUST GUESSING): Microsoft Windows 10|11|2019 (92%)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows

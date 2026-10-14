@@ -1,0 +1,45 @@
+enable
+configure terminal
+hostname SW1
+vlan 10
+ name Management
+vlan 20
+ name Employees
+vlan 30
+ name Guests
+exit
+interface fa0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+interface fa0/2
+ switchport mode access
+ switchport access vlan 10
+interface fa0/3
+ switchport mode access
+ switchport access vlan 20
+interface fa0/4
+ switchport mode access
+ switchport access vlan 30
+interface range fa0/2 - 4
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security mac-address sticky
+ switchport port-security violation restrict
+interface range fa0/5 - 24
+ switchport mode access
+ switchport access vlan 999
+ shutdown
+interface vlan 10
+ ip address 192.168.10.2 255.255.255.0
+ no shutdown
+ip default-gateway 192.168.10.1
+ip domain-name lab.local
+username admin secret Admin@123
+enable secret Enable@123
+crypto key generate rsa modulus 1024
+ip ssh version 2
+line vty 0 4
+ login local
+ transport input ssh
+end
+write memory
